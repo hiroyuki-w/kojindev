@@ -1,0 +1,8 @@
+.new-report-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}

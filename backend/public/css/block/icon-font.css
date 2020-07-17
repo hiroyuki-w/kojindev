@@ -1,0 +1,8 @@
+.icon-font {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.icon-font--platform:before {
+    content: "\f108";
+}

@@ -1,0 +1,38 @@
+.header {
+    background: rgba(40, 58, 90, 0.9);
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 0px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    padding: 5px;
+}
+
+.header a {
+    color: #ffffff;
+}
+
+.header__ling-group {
+    display: flex;
+}
+
+.header__link {
+    margin-right: 10px
+}
+
+
+.header__logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #fff;
+}

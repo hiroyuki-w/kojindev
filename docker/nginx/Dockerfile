@@ -1,0 +1,15 @@
+FROM node:14.2-alpine as node
+FROM nginx:1.18-alpine
+SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
+
+ENV TZ=Asia/Tokyo
+
+RUN apk update && \
+  apk add --update --no-cache --virtual=.build-dependencies g++
+
+COPY --from=node /usr/local/bin /usr/local/bin
+COPY --from=node /opt /opt
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./local.kojin.dev-key.pem /etc/nginx/local.kojin.dev-key.pem
+COPY ./local.kojin.dev.pem /etc/nginx/local.kojin.dev.pem
+WORKDIR /work/backend

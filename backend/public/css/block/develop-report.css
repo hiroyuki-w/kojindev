@@ -1,0 +1,49 @@
+.develop-report {
+    max-width: 100%;
+
+    background: #f3f5fa;
+    text-align: left;
+    padding: 3px;
+}
+
+
+.develop-report__item {
+
+    background: #ffffff;
+    position: relative;
+    margin: 2px;
+    padding: 4px;
+}
+
+.develop-report__title {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    padding: 0 10px;
+    outline: none;
+    color: rgb(70, 85, 113);
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.develop-report__title a:hover {
+    color: rgb(70, 85, 113);
+}
+
+.develop-report__toggle-icon {
+    position: absolute;
+    right: 0px;
+    top: 4px;
+}
+
+.develop-report__toggle {
+    padding: 4px;
+    font-size: 0.8em;
+
+}
+
+.develop-report__toggle--hidden {
+    display: none;
+}

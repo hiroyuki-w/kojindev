@@ -1,0 +1,64 @@
+.application-spec {
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.application-spec__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #37517e;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.application-spec__description {
+    font-size: 0.8em;
+    text-align: left;
+}
+
+
+.application-spec__item {
+    margin-bottom: 3rem;
+    max-width: 700px;
+}
+
+.application-spec__icon::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    background: #465571;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    padding: .4em .4em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+.application-spec__icon--overview::before {
+    content: "\f15c";
+}
+
+.application-spec__icon--tech::before {
+    content: "\f7d9";
+}
+
+.application-spec__icon--pr::before {
+    content: "\f0eb";
+}
+
+.application-spec__icon--features::before {
+    content: "\f121";
+}
+
+.application-spec__icon--other::before {
+    content: "\f4ad";
+}

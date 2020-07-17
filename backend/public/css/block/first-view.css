@@ -1,0 +1,47 @@
+.first-view {
+
+    height: 80vh;
+    background: #37517e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    padding-top: 0px;
+}
+
+@media (max-width: 559px) {
+    .first-view {
+        height: 100vh;
+        text-align: center;
+        flex-direction: column-reverse;
+    }
+}
+
+.first-view__message {
+    max-width: 480px;
+}
+
+.first-view__catch {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+
+.first-view__subcatch {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+}
+
+
+.first-view__login-form {
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+.first-view__ketvisual {
+    max-width: 480px;
+}

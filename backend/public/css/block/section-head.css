@@ -1,0 +1,42 @@
+.section-head {}
+
+.section-head__title {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #37517e;
+    text-align: center;
+
+}
+
+.section-head__title::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.section-head__title::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #47b2e4;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.section-head__description {
+    margin-top: 5px;
+    text-align: center;
+
+}

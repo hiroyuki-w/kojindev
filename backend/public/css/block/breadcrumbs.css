@@ -1,0 +1,38 @@
+.breadcrumbs__link {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs__link + li {
+    padding-left: 10px;
+}
+
+.breadcrumbs__link + li:before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #4668a2;
+    content: "/";
+
+}
+
+
+
+.breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0 0px 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs__now {
+    font-size: 28px;
+    font-weight: 600;
+    color: #37517e;
+    text-align: left;
+}

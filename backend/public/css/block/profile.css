@@ -1,0 +1,24 @@
+.profile {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.profile__social-icon {
+    justify-content: center;
+    display: flex;
+}
+
+.profile__detail {
+    text-align: left;
+}
+
+.profile__label {
+    font-weight: 700;
+}
+
+.profile__body {
+    font-size: .9em;
+    padding: 3px;
+}

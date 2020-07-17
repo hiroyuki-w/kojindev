@@ -1,0 +1,18 @@
+.upload-image {
+    position: relative;
+}
+
+.upload-image__item {
+
+}
+
+.upload-image__check {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #fafafa;
+    padding: 3px;
+    border-radius: .24rem;
+}
+
+

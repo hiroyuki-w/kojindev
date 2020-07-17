@@ -1,0 +1,106 @@
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+span.line {
+    display: block;
+    font-size: 15px;
+    padding-bottom: 10px;
+    position: relative;
+    font-weight: 500;
+}
+
+span.line::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #cbd6e9;
+    bottom: 0;
+    left: 0;
+}
+
+.u-container {
+    max-width: 950px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.block-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+.icon {
+    font-family: IcoFont !important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    line-height: 1;
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+}
+*/
+
+.icon-platform:before {
+    content: "\ea3b";
+}
+
+.display-none {
+    display: none;
+}
+
+.has-error {
+    display: block;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.mt-5 {
+    margin-top: 5px !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-15 {
+    margin-top: 15px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.mt-30 {
+    margin-top: 30px !important;
+}
+
+.p-5 {
+    padding: 5px !important;
+}
+
+.u-bold {
+    font-weight: bold;
+}
+
+.u-font-size-s {
+    font-size: 0.8em !important;
+}
+
+.u-empty-content {
+    color: red;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}

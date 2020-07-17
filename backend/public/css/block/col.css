@@ -1,0 +1,78 @@
+/*
+PC２カラム、モバイル1カラム
+*/
+
+.col-pc-2-mobile-1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .col-pc-2-mobile-1 {
+        flex-direction: column;
+        flex-basis: 100%;
+    }
+}
+
+.col-pc-2-mobile-1__cel {
+    flex-basis: 50%;
+}
+
+.col-pc-2-mobile-1__cel--padding-1 {
+    padding: 1px;
+}
+
+/*
+PC２カラム、モバイル1カラム
+左メニュー構成
+*/
+
+.col-pc-2-mobile-1--left-menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .col-pc-2-mobile-1--left-menu {
+        flex-direction: column;
+        flex-basis: 100%;
+    }
+}
+
+.col-pc-2-mobile-1__left-cel--left-menu {
+    flex-basis: 30%;
+}
+
+.col-pc-2-mobile-1__right-cel--left-menu {
+    flex-basis: 70%;
+}
+
+/*
+PC3カラム、モバイル2カラム
+*/
+.col-pc-3-mobile-1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.col-pc-3-mobile-1--center {
+    justify-content: center;
+}
+
+@media (max-width: 559px) {
+    .col-pc-3-mobile-1 {
+        flex-direction: column;
+        flex-basis: 100%;
+    }
+}
+
+.col-pc-3-mobile-1__cel {
+    flex-basis: 33%;
+}
+
+.col-pc-3-mobile-1__cel--padding-15 {
+    padding: 15px;
+}

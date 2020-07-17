@@ -1,0 +1,41 @@
+.social-icon-list {
+    display: flex;
+    align-items: center;
+
+
+}
+
+.social-icon-list__link {
+    transition: ease-in-out 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 32px;
+    height: 32px;
+    color: #37517e;
+    background: #eff2f8;
+    margin-right: 4px;
+    font-weight: 900;
+
+}
+
+.social-icon-list__link:last-child {
+    margin-right: 0px;
+}
+
+
+.social-icon-list__icon--twitter::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f099";
+}
+
+.social-icon-list__icon--github::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f09b"
+}
+
+.social-icon-list__icon--mypage::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f015"
+}

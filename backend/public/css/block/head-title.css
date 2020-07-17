@@ -1,0 +1,78 @@
+.head-title {
+    position: relative;
+    color: #37517e;
+    font-weight: bold;
+
+}
+
+.head-title--section-title {
+    font-size: 32px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.head-title--section-title::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.head-title--section-title::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #47b2e4;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+
+.head-title--middle {
+    font-size: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.head-title--app-section-title {
+    font-size: 32px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.head-title--app-section-title::before {
+    position: absolute;
+    display: block;
+    width: 120px;
+    bottom: 1px;
+    border-radius: .25rem;
+    font-size: 10px;
+    left: calc(50% - 60px);
+}
+
+.head-title--app-section-tag-spapp::before {
+    color: #fff;
+    background-color: #dc3545;
+    content: 'スマホアプリ';
+}
+
+.head-title--app-section-tag-website::before {
+    color: #fff;
+    background-color: #007bff;
+    content: 'WEBサイト';
+}
+
+.head-title--app-section-tag-other::before {
+    color: #fff;
+    background-color: #17a2b8;
+    content: 'その他アプリ';
+}
+
+
+
