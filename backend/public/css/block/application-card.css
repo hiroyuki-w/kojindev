@@ -16,6 +16,9 @@
     }
 }
 
+.application-card__note {
+    font-size: 0.8em;
+}
 
 .application-card__thumnail {
 

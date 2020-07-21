@@ -104,3 +104,11 @@ span.line::after {
     width: 100%;
     text-align: center;
 }
+
+.u-text-left {
+    text-align: left;
+}
+
+.list-style-type-disc {
+    list-style-type: disc;
+}

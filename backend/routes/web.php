@@ -18,6 +18,7 @@ Route::get('/', 'TopController@index')->name('top');
 Route::group(['namespace' => 'Social'], function () {
     Route::get('/social/login/{provider}', 'LoginController@login')->name('social.login');
     Route::get('/social/login/{provider}/callback', 'LoginController@callback')->name('social.callback');
+    Route::get('/social/logout', 'LoginController@logout')->name('logout');
 });
 
 //会員登録、会員情報変更
@@ -64,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 //ビューのみのページ
 Route::view('/login', 'login')->name('login');
+Route::view('/userpolicy', 'userpolicy')->name('userpolicy');
 
 
 

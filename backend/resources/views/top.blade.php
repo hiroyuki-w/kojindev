@@ -70,12 +70,17 @@
                                 <h4 class="head-title head-title--middle">
                                     <a href="{{route('application.show',['trApplication' => $application->id])}}">{{$application->application_name}}</a>
                                 </h4>
+
                                 <div class="tags-list">
                                     @foreach($application->tr_application_tags as $tag)
                                         <p class="tags-list__item">{{$tag->tag_name}}</p>
                                     @endforeach
                                 </div>
+
                                 <span class="line"></span>
+                                <div class="application-card__note">開発者名：<a
+                                        href="{{route('user.detail',['trUser'=>$application->tr_user_id])}}">{{$application->tr_user->user_name}}</a>
+                                </div>
                                 <p class="application-card__overview">
                                     {{$application->application_overview}}
                                 </p>
@@ -120,9 +125,11 @@
                                     href="{{route('application.show',['trApplication'=>$report->tr_application_id])}}">
                                     <h4 class="head-title head-title--middle icon icon--{{$report->report_type_code}}">{{$report->report_title}}</h4>
                                 </a>
-                                <div>アプリ名：<a
+                                <div class="application-card__note">アプリ名：<a
                                         href="{{route('application.show',['trApplication'=>$report->tr_application_id])}}">{{$report->tr_application->application_name}}</a>
-                                    ／開発者：<a
+                                </div>
+                                <div class="application-card__note">
+                                    開発者：<a
                                         href="{{route('user.detail',['trUser'=>$report->tr_application->tr_user->id])}}">{{$report->tr_application->tr_user->user_name}}</a>
                                 </div>
                                 <span class="line"></span>

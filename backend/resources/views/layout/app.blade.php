@@ -107,9 +107,12 @@
 <!-- ======= Footer ======= -->
 <footer class="footer">
     <h3 class="footer__logo">KOJIN</h3>
-    <p class="footer__email">
+    <div class="footer__email">
+        <div>
+            <a href="{{route('logout')}}">ログアウト</a>|<a href="{{route('userpolicy')}}">利用規約</a>
+        </div>
         <strong>Email:</strong> {{env('APP_EMAIL')}}<br>
-    </p>
+    </div>
     <p class="footer__copyright">
         &copy; Copyright <strong><span>hiroyuki-w</span></strong>. All Rights Reserved
     </p>

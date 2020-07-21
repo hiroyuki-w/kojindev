@@ -18,6 +18,10 @@
                     </div>
                 @endforeach
             </div>
+            <div>
+                開発者：<a
+                    href="{{route('user.detail',['trUser'=>$trApplication->tr_user_id])}}">{{$trApplication->tr_user->user_name}}</a>
+            </div>
         </div>
 
 
