@@ -17,13 +17,13 @@
                             Google
                         </a>
                     </div>
-                    <!--
+
                     <div>
-                        <a class="button button--login">
+                        <a href="{{route('social.login',['provider' => 'twitter'])}}" class="button button--login">
                             Twitter
                         </a>
                     </div>
-                    -->
+
                     <div>
                         <a href="{{route('social.login',['provider' => 'github'])}}" class="button button--login">
                             GitHub
