@@ -11,15 +11,23 @@
             <h2 class="first-view__sub-catch">１人でWEBサービス、スマホアプリなどを開発している個人開発者のコミュニティ</h2>
             <div class="first-view__login-form">
                 <p>ログイン</p>
-                <a href="{{route('social.login',['provider' => 'google'])}}" class="button button--login">
-                    Google
-                </a>
-                <a href="{{route('social.login',['provider' => 'twitter'])}}" class="button button--login">
-                    Twitter
-                </a>
-                <a href="{{route('social.login',['provider' => 'github'])}}" class="button button--login">
-                    GitHub
-                </a>
+                <div>
+                    <a href="{{route('social.login',['provider' => 'google'])}}">
+                        <button class="button button--login">Google</button>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="{{route('social.login',['provider' => 'twitter'])}}">
+                        <button class="button button--login">Twitter</button>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="{{route('social.login',['provider' => 'github'])}}">
+                        <button class="button button--login">GitHub</button>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="first-view__ketvisual">

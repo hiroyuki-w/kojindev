@@ -11,10 +11,9 @@
 
             <div class="content content--complete">
                 <div>
-                    <a
-                        href="{{route('application.show',['trApplication' => session('tr_application_id')])}}">
-                        <p class="button button--default">アプリケーションページに戻る
-                        </p>
+                    <a href="{{route('application.show',['trApplication' => session('tr_application_id')])}}">
+                        <button class="button button--default">アプリケーションページに戻る
+                        </button>
                     </a>
                 </div>
 

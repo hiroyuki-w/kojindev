@@ -12,8 +12,10 @@
 
             <div class="content content--complete">
                 <div>
-                    <a href="{{route('top')}}">
-                        <a class="button button--default" href="{{route('user.detail',['trUser' => Auth::id()])}}">ユーザページに戻る</a>
+                    <a href="{{route('user.detail',['trUser' => Auth::id()])}}">
+                        <button class="button button--default">
+                            ユーザページに戻る
+                        </button>
 
                     </a>
                 </div>

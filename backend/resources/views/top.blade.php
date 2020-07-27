@@ -13,20 +13,20 @@
                 <div class="first-view__login-form">
                     <p>会員登録・ログイン</p>
                     <div>
-                        <a href="{{route('social.login',['provider' => 'google'])}}" class="button button--login">
-                            Google
+                        <a href="{{route('social.login',['provider' => 'google'])}}">
+                            <button class="button button--login">Google</button>
                         </a>
                     </div>
 
                     <div>
-                        <a href="{{route('social.login',['provider' => 'twitter'])}}" class="button button--login">
-                            Twitter
+                        <a href="{{route('social.login',['provider' => 'twitter'])}}">
+                            <button class="button button--login">Twitter</button>
                         </a>
                     </div>
 
                     <div>
-                        <a href="{{route('social.login',['provider' => 'github'])}}" class="button button--login">
-                            GitHub
+                        <a href="{{route('social.login',['provider' => 'github'])}}">
+                            <button class="button button--login">GitHub</button>
                         </a>
                     </div>
                 </div>

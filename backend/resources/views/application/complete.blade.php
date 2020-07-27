@@ -13,8 +13,8 @@
             <div class="content content--complete">
                 <div>
                     <a href="{{route('user.me')}}">
-                        <p class="button button--default">マイページに戻る
-                        </p>
+                        <button class="button button--default">マイページに戻る
+                        </button>
                     </a>
                 </div>
 
