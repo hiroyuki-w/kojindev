@@ -73,7 +73,8 @@
 
                                 <div class="tags-list">
                                     @foreach($application->tr_application_tags as $tag)
-                                        <p class="tags-list__item">{{$tag->tag_name}}</p>
+                                        <a href="{{route('application.search',['tag'=>$tag->tag_name])}}"><p
+                                                class="tags-list__item">{{$tag->tag_name}}</p></a>
                                     @endforeach
                                 </div>
 

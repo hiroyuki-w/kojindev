@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\Repositories\TrApplicationRepository;
 use App\Services\ApplicationService;
 use Auth;
 use App\Models\TrApplication;
@@ -42,7 +43,8 @@ class ApplicationController extends Controller
         TrApplicationTagRepository $trApplicationTagRepository,
         UploadImageService $uploadImageService,
         ApplicationService $applicationService
-    ) {
+    )
+    {
         $this->trApplicationReportRepository = $trApplicationReportRepository;
         $this->trApplicationCommentRepository = $trApplicationCommentRepository;
         $this->trApplicationTagRepository = $trApplicationTagRepository;
@@ -113,5 +115,11 @@ class ApplicationController extends Controller
 
         return redirect()
             ->route('user.detail', ['trUser' => Auth::id()]);
+    }
+
+    public function search($tag = '', TrApplicationRepository $trApplicationRepository)
+    {
+        $trApplications = $trApplicationRepository->search($tag, 20);
+        return view('application.search', compact('trApplications', 'tag'));
     }
 }

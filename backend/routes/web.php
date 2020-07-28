@@ -52,7 +52,9 @@ Route::group(['namespace' => 'Application'], function () {
         Route::get('/application/report/complete',
             'ReportController@complete')->name('application.report.complete');
     });
-    Route::get('/application/{trApplication}', 'ApplicationController@show')->name('application.show');
+    Route::get('/application/{trApplication}', 'ApplicationController@show')->where('trApplication', '[0-9]+')->name('application.show');
+    Route::get('/application/search/{tag?}', 'ApplicationController@search')->name('application.search');
+
 
 });
 

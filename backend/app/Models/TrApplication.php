@@ -97,7 +97,7 @@ class TrApplication extends Model
     /**
      * 公開OKなサービスリスト取得
      *
-     * @param  Builder  $query
+     * @param Builder $query
      * @return Builder
      */
     public function scopePublished(Builder $query): Builder
@@ -121,5 +121,6 @@ class TrApplication extends Model
         $images = app(UploadImageService::class)->set('Application')->getSavedImages($this->id);
         return $images['main'];
     }
+
 
 }
