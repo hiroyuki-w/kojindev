@@ -7,22 +7,38 @@
     background: #fff;
     transition: 0.5s;
     text-align: left;
-    height: 200px;
+    height: 290px;
 }
 
 @media (max-width: 768px) {
     .application-card {
         flex-basis: 100%;
+        max-height: 100%;
     }
 }
+
+@media (max-width: 480px) {
+    .application-card {
+        flex-basis: 100%;
+        max-height: 100%;
+        min-height: 200px;
+        height: auto;
+    }
+}
+
 
 .application-card__note {
     font-size: 0.8em;
 }
 
 .application-card__thumnail {
-
     flex: 1 0 30%;
+    text-align: center;
+}
+
+.application-card__image {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .application-card__detail {

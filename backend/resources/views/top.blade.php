@@ -63,7 +63,7 @@
                                 <a href="{{route('application.show',['trApplication' => $application->id])}}">
                                     <img
                                         src="{{current($application->application_thumbnails)}}"
-                                        alt="" class="img-fluid">
+                                        alt="" class="application-card__image">
                                 </a>
                             </div>
                             <div class="application-card__detail">
@@ -117,7 +117,7 @@
                                     <img
                                         src="{{current($report->tr_application->application_thumbnails)}}"
                                         alt=""
-                                        class="img-fluid">
+                                        class="application-card__image">
                                 </a>
                             </div>
                             <div class="application-card__detail">
