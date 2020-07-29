@@ -35,8 +35,16 @@ URLやDB接続先など基本的な設定は記述済みのため、以下の項
 |GOOGLE_CLIENT_SECRET|Google Cloud APIsのクライアントシークレット|
 |GITHUB_CLIENT_ID|GitHubのOAuthAppクライアントID|
 |GITHUB_CLIENT_SECRET|GitHubのOAuthAppのクライアントシークレット|
+|TWITTER_CLIENT_ID|Twitterアプリのクライアントシークレット|
+|TWITTER_CLIENT_SECRET|Twitterアプリのクライアントシークレット|
 |GOOGLE_ANALYTICS_TRACKING_ID|GoogleAnalyticsのトラッキングID|
 
+ログインはSNSログインしか機能がないため、いずれかのキーの取得が必要。  
+Githubの取得が一番簡単と思われます。  
 Google/GithubのAPIキー取得方法については、以下参考に  
 [Google](https://cloud.google.com/docs/authentication/api-keys)  
 [GitHub](https://developer.github.com/apps/building-oauth-apps/)  
+
+## 設計
+- ER図
+![ER図](diagram.png "ER図")
