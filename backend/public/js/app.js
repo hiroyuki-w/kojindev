@@ -23,5 +23,14 @@ $(function () {
         return false;
     });
 });
+$(function () {
+    $('#js-user-search-submit').on('click', function () {
+        let keyword = $('#js-user-search-input').val();
+        let action = $('#js-user-search-form').attr('action');
+        $(location).attr("href", action + '/' + encodeURIComponent(keyword));
+    });
+});
+
+
 
 

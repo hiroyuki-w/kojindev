@@ -12,8 +12,7 @@
                 <div class="col-pc-2-mobile-1__left-cel--left-menu p-5">
                     <div class="profile">
                         <div class="user-icon block-center">
-                            <img src="{{$trUser->profile_image}}"
-                                 class="user-icon__image">
+                            <img src="{{$trUser->profile_image}}" class="user-icon__image">
                         </div>
 
                         <div class="profile__social-icon">
@@ -73,7 +72,7 @@
                     </div>
 
                 </div>
-                <div class="col-pc-2-mobile-1__right-cel--left-menu  p-5">
+                <div class="col-pc-2-mobile-1__right-cel--left-menu p-5">
                     <h2 class="head-title head-title--section-title">開発プロダクト一覧</h2>
                     <p>いままで開発したアプリケーション</p>
                     <div class="admin-action

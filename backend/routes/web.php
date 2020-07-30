@@ -60,6 +60,9 @@ Route::group(['namespace' => 'Application'], function () {
 
 //ユーザページ
 Route::get('/user/{trUser}/', 'UserController@detail')->where('trUser', '[0-9]+')->name('user.detail');
+Route::get('/user/search/{keyword?}', 'UserController@search')->name('user.search');
+
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/me/', function () {
         return redirect()->route('user.detail', ['trUser' => Auth::id()]);

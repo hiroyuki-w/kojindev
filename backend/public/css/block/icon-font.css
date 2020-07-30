@@ -6,3 +6,7 @@
 .icon-font--platform:before {
     content: "\f108";
 }
+
+.icon-font--applist:before {
+    content: "\f126";
+}

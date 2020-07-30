@@ -1,0 +1,48 @@
+.line-form {
+    background: #fff;
+    padding: 6px 10px;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
+    text-align: left;
+    display: block;
+}
+
+.line-form__input-form {
+    border: 0;
+    width: calc(100% - 50px);
+    overflow: visible;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: #000000;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: none;
+    background-color: #ffffff;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+}
+
+.line-form__input-form:focus {
+    outline: 0px;
+}
+
+.line-form__submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 20px;
+    background: #47b2e4;
+    color: #fff;
+    border-radius: 50px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}

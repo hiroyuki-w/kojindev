@@ -37,9 +37,9 @@
 
         </section>
     @endif
-    <section class="section section">
+    <section class="section">
         <div class="content">
-            <h2 class="head-title head-title--section-title">このサイトは？</h2>
+            <h2 class="head-title head-title--section-title">「個人.dev」とは？</h2>
             <p class="u-font-size-s">
                 個人でウェブサービス、ネイティブアプリケーションを個人開発している人が、自分の成果物を発表したり、リリース情報などを発表できる場です。<br><br>
                 自分のアプリケーションの宣伝や、他の個人開発している人たちを見つけて交流したりすることを目的にサイトをオープンしました。<br><br>
@@ -48,11 +48,21 @@
             </p>
         </div>
     </section>
-
     <section class="section section--backcolor-dark">
+        <div class="content content--x-small-width">
+            <h2 class="head-title head-title--section-title">個人開発者検索</h2>
+            <p>登録されている個人開発者のプロフィールを検索</p>
+            <form action="{{route('user.search')}}" method="get" class="line-form" id="js-user-search-form">
+                <input name="keyword" class="line-form__input-form" id="js-user-search-input">
+                <button type="button" class="line-form__submit" id="js-user-search-submit">検索</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section">
         <div class="content">
-            <h2 class="head-title head-title--section-title">新着サービス</h2>
-            <p>最近登録されたサービスです。</p>
+            <h2 class="head-title head-title--section-title">新着アプリケーション</h2>
+            <p>最近登録されたアプリケーションです。</p>
             <div class="col-pc-2-mobile-1">
 
                 @forelse($latestApplications as $application)
@@ -100,11 +110,17 @@
                 @endforelse
 
             </div>
-
+            <div class="mt-30">
+                <a href="{{route('application.search')}}">
+                    <button class="button button--more">
+                        もっと見る...
+                    </button>
+                </a>
+            </div>
 
         </div>
     </section>
-    <section class="section section">
+    <section class="section  section--backcolor-dark">
         <div class="content">
             <h2 class="head-title head-title--section-title">開発報告</h2>
             <p>最近の開発報告</p>

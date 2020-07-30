@@ -1,19 +1,14 @@
 .user-icon {
-    overflow: hidden;
-    width: 150px; /* トリミングしたい枠の幅 */
-    height: 150px; /* トリミングしたい枠の高さ */
-    position: relative;
-    border-radius: 50%;
+    width: 50%;
+}
+
+.user-icon--wide {
+    width: 80%;
 }
 
 .user-icon__image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    border-radius: 50%;
 }
 

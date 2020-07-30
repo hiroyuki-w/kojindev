@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TrUser;
 use App\Repositories\TrApplicationReportRepository;
 use App\Repositories\TrApplicationRepository;
+use App\Repositories\TrUserRepository;
 use App\Services\ApplicationImageService;
 
 class UserController extends Controller
@@ -23,7 +24,8 @@ class UserController extends Controller
     public function __construct(
         TrApplicationRepository $trApplicationRepository,
         TrApplicationReportRepository $trApplicationReportRepository
-    ) {
+    )
+    {
         $this->trApplicationRepository = $trApplicationRepository;
         $this->trApplicationReportRepository = $trApplicationReportRepository;
 
@@ -48,5 +50,11 @@ class UserController extends Controller
             compact(
                 'trUser', 'applications', 'applicationReports'
             ));
+    }
+
+    public function search($keyword = '', TrUserRepository $trUserRepository)
+    {
+        $trUsers = $trUserRepository->search($keyword, 20);
+        return view('user.search', compact('trUsers', 'keyword'));
     }
 }

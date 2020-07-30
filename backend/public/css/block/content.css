@@ -11,6 +11,10 @@
     max-width: 690px;
 }
 
+.content--x-small-width {
+    max-width: 480px;
+}
+
 .content--complete {
     height: 50vh;
     max-width: 690px;

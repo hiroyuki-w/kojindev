@@ -13,26 +13,41 @@
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-
 .icon--develop::before {
-
     color: #fff;
     background-color: #17a2b8;
     content: "開発報告";
 }
 
 .icon--release::before {
-
     color: #fff;
     background-color: #dc3545;
     content: "リリース";
 }
 
 .icon--info::before {
-
     color: #fff;
     background-color: #007bff;
     content: "運営報告";
+}
+
+
+.icon--website::before {
+    color: #fff;
+    background-color: #007bff;
+    content: "ＷＥＢサイト";
+}
+
+.icon--spapp::before {
+    color: #fff;
+    background-color: #dc3545;
+    content: "スマホアプリ";
+}
+
+.icon--other::before {
+    color: #fff;
+    background-color: #17a2b8;
+    content: "その他アプリ";
 }
 
 
