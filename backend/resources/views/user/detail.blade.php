@@ -135,7 +135,7 @@
                                     ">
                                     <div class="admin-action__list">
                                         <a target="_blank"
-                                           href="http://twitter.com/share?text=&url={{route('application.show',['trApplication'=>$application->id])}}&hashtags={{$application->application_name}},個人.dev"
+                                           href="http://twitter.com/share?text=&url={{route('application.show',['trApplication'=>$application->id])}}&hashtags={{$application->application_name}},個人開発"
                                            rel="nofollow"
                                            class="social-icon-list__icon--twitter admin-action__item">報告を書く</a>
                                     </div>
