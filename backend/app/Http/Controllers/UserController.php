@@ -7,6 +7,7 @@ use App\Repositories\TrApplicationReportRepository;
 use App\Repositories\TrApplicationRepository;
 use App\Repositories\TrUserRepository;
 use App\Services\ApplicationImageService;
+use App\Services\Twitter\GetTweetService;
 
 class UserController extends Controller
 {
@@ -20,14 +21,20 @@ class UserController extends Controller
      * @var TrApplicationReportRepository
      */
     private trApplicationReportRepository $trApplicationReportRepository;
+    /**
+     * @var GetTweetService
+     */
+    private GetTweetService $getTweetService;
 
     public function __construct(
         TrApplicationRepository $trApplicationRepository,
-        TrApplicationReportRepository $trApplicationReportRepository
+        TrApplicationReportRepository $trApplicationReportRepository,
+        GetTweetService $getTweetService
     )
     {
         $this->trApplicationRepository = $trApplicationRepository;
         $this->trApplicationReportRepository = $trApplicationReportRepository;
+        $this->getTweetService = $getTweetService;
 
     }
 
@@ -41,10 +48,7 @@ class UserController extends Controller
                 return $application->public_flg == FLG_ON;
             });
         }
-
-        $applicationReports =
-            $this->trApplicationReportRepository
-                ->getListByApplicationIds($applications->pluck('id')->toArray());
+        $applicationReports = $this->getTweetService->getApplicationTweetMany($trUser->tr_user_profile, $applications, 10);
 
         return view('user.detail',
             compact(

@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Created by Reliese Model.
- *
- *
+ * //TODO:機能除却予定
  */
 
 namespace App\Models;
@@ -69,7 +67,7 @@ class TrApplicationReport extends Model
     /**
      * 公開OKなレポートリスト取得
      *
-     * @param  Builder  $query
+     * @param Builder $query
      * @return Builder
      */
     public function scopePublished(Builder $query): Builder

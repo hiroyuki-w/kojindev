@@ -30,9 +30,10 @@ class TopController extends Controller
     public function index()
     {
         $latestApplications = $this->trApplicationRepository->getPublishedApplicationList(6);
-        $latestReports = $this->trApplicationReportRepository->getPublishedReportList(6);
+        //TODO:機能除却予定
+        //$latestReports = $this->trApplicationReportRepository->getPublishedReportList(6);
 
         return view('top',
-            compact('latestApplications', 'latestReports'));
+            compact('latestApplications',));
     }
 }

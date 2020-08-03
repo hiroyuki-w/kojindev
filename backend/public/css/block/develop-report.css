@@ -8,11 +8,14 @@
 
 
 .develop-report__item {
-
     background: #ffffff;
     position: relative;
     margin: 2px;
     padding: 4px;
+}
+
+.develop-report__item:hover {
+    cursor: pointer;
 }
 
 .develop-report__title {

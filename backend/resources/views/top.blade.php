@@ -120,55 +120,6 @@
 
         </div>
     </section>
-    <section class="section  section--backcolor-dark">
-        <div class="content">
-            <h2 class="head-title head-title--section-title">開発報告</h2>
-            <p>最近の開発報告</p>
-            <div class="col-pc-2-mobile-1">
-                @forelse($latestReports as $report)
-                    <div class="col-pc-2-mobile-1__cel col-pc-2-mobile-1__cel--padding-1">
-                        <div class="application-card">
 
-                            <div class="application-card__thumnail">
-                                <a href="{{route('application.show',['trApplication'=>$report->tr_application_id])}}">
-                                    <img
-                                        src="{{current($report->tr_application->application_thumbnails)}}"
-                                        alt=""
-                                        class="application-card__image">
-                                </a>
-                            </div>
-                            <div class="application-card__detail">
-                                <a
-                                    href="{{route('application.show',['trApplication'=>$report->tr_application_id])}}">
-                                    <h4 class="head-title head-title--middle icon icon--{{$report->report_type_code}}">{{$report->report_title}}</h4>
-                                </a>
-                                <div class="application-card__note">アプリ名：<a
-                                        href="{{route('application.show',['trApplication'=>$report->tr_application_id])}}">{{$report->tr_application->application_name}}</a>
-                                </div>
-                                <div class="application-card__note">
-                                    開発者：<a
-                                        href="{{route('user.detail',['trUser'=>$report->tr_application->tr_user->id])}}">{{$report->tr_application->tr_user->user_name}}</a>
-                                </div>
-                                <span class="line"></span>
-                                <p class="application-card__overview">
-                                    {{$report->report_text}}
-                                </p>
-                                <div class="social-icon-list">
-                                    <a class="social-icon-list__item" href=""><i></i></a>
-                                    <a class="social-icon-list__item" href=""><i></i></a>
-                                    <a class="social-icon-list__item" href=""><i></i></a>
-                                    <a class="social-icon-list__item" href=""> <i></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <div class="mt-15 u-empty-content">まだ登録がありません</div>
-                @endforelse
-
-
-            </div>
-        </div>
-    </section>
 
 @endsection

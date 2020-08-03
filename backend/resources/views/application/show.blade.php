@@ -89,20 +89,28 @@
         <p>開発者からのリリース報告などのコメントです</p>
         <div class="content content--small-width">
 
+            <div class="u-font-size-s u-bold mt-10">過去7日間のツイート(※反映に時間がかかります)</div>
             <div class="develop-report">
                 @forelse($reports as $report)
                     <div class="develop-report__item">
                         <h3 class="icon icon--{{$report->report_type_code}} develop-report__title js-develop-report-toggle-button">
                             <a>{{$report->report_title}}</a>
                         </h3>
-                        <i class="develop-report__toggle-icon js-toggle-icon rotate-180">▲</i>
+                        <i class="develop-report__toggle-icon js-toggle-icon rotate-180 js-develop-report-toggle-button">▲</i>
 
-                        <div class="develop-report__toggle js-develop-report-toggle-block display-none">
+                        <div class="develop-report__toggle js-develop-report-toggle-block
+                        @if (!$loop->first)
+                            display-none
+                        @endif
+                            ">
                             {!! ee($report->report_text) !!}
+                            @if($report->report_image)
+                                <p><img src="{{$report->report_image}}" class="img-fluid"></p>
+                            @endif
                         </div>
                     </div>
                 @empty
-                    <div class="mt-15 u-empty-content">まだ開発報告がありません</div>
+                    <div class="mt-15 u-empty-content">開発報告がありません<br>過去7日間のツイートを表示します</div>
                 @endforelse
             </div>
 

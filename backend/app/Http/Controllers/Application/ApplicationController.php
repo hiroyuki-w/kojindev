@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Application;
 
 use App\Repositories\TrApplicationRepository;
 use App\Services\ApplicationService;
+use App\Services\Twitter\GetTweetService as GetTweetService;
 use Auth;
 use App\Models\TrApplication;
 use App\Repositories\TrApplicationReportRepository;
@@ -42,7 +43,8 @@ class ApplicationController extends Controller
         TrApplicationReportRepository $trApplicationReportRepository,
         TrApplicationTagRepository $trApplicationTagRepository,
         UploadImageService $uploadImageService,
-        ApplicationService $applicationService
+        ApplicationService $applicationService,
+        GetTweetService $getTweetService
     )
     {
         $this->trApplicationReportRepository = $trApplicationReportRepository;
@@ -50,6 +52,7 @@ class ApplicationController extends Controller
         $this->trApplicationTagRepository = $trApplicationTagRepository;
         $this->uploadImageService = $uploadImageService;
         $this->applicationService = $applicationService;
+        $this->getTweetService = $getTweetService;
 
     }
 
@@ -57,7 +60,7 @@ class ApplicationController extends Controller
     {
         $this->authorize('published', $trApplication);
 
-        $reports = $this->trApplicationReportRepository->getListByApplicationIds([$trApplication->id], 10);
+        $reports = $this->getTweetService->getApplicationTweet($trApplication->tr_user->tr_user_profile, $trApplication, 10);
         $comments = $this->trApplicationCommentRepository->getListByApplicationId($trApplication->id, 10);
 
         return view('application.show',

@@ -134,26 +134,37 @@
                                     @endcannot
                                     ">
                                     <div class="admin-action__list">
-                                        <a href="{{route('application.report.create',['trApplication'=>$application->id])}}"
-                                           class="admin-action__item">報告を書く</a>
+                                        <a target="_blank"
+                                           href="http://twitter.com/share?text=&url={{route('application.show',['trApplication'=>$application->id])}}&hashtags={{$application->application_name}},個人.dev"
+                                           rel="nofollow"
+                                           class="social-icon-list__icon--twitter admin-action__item">報告を書く</a>
+                                    </div>
+                                    <div>
+                                        報告登録方法：アプロフィールにTwitterアカウントを設定し、プリケーション名をハッシュタグにしてツイート
                                     </div>
 
                                 </div>
+
+                                <div class="u-font-size-s u-bold">過去7日間のツイート(※反映に時間がかかります)</div>
                                 <div class="develop-report">
-                                    @forelse($applicationReports->where('tr_application_id', $application->id)->sortByDesc('id') as $report)
+                                    @forelse($applicationReports->where('tr_application_id', $application->id) as $report)
                                         <div class="develop-report__item">
                                             <h3 class="icon icon--{{$report->report_type_code}} develop-report__title js-develop-report-toggle-button">
                                                 <a>{{$report->report_title}}</a>
                                             </h3>
-                                            <i class="develop-report__toggle-icon js-toggle-icon rotate-180">▲</i>
+                                            <i class="develop-report__toggle-icon js-toggle-icon rotate-180 js-develop-report-toggle-button">▲</i>
 
                                             <div
-                                                class="develop-report__toggle js-develop-report-toggle-block display-none">
+                                                class="develop-report__toggle js-develop-report-toggle-block
+                                                @if (!$loop->first)
+                                                    display-none
+                                                @endif
+                                                    ">
                                                 {!! ee($report->report_text) !!}
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="mt-15 u-empty-content">まだ報告の登録がありません</div>
+                                        <div class="mt-15 u-empty-content">報告の登録がありません<br>過去7日間のツイートを表示します</div>
                                     @endforelse
                                 </div>
 

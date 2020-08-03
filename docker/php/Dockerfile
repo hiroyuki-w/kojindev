@@ -43,7 +43,10 @@ RUN apt-get update && \
   composer global require hirak/prestissimo
 RUN pecl install xdebug \
   && docker-php-ext-enable xdebug
-  
+
+RUN pecl install apcu \
+    && docker-php-ext-enable apcu
+    
 COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./php.ini /usr/local/etc/php/php.ini
 

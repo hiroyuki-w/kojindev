@@ -1,4 +1,7 @@
 <?php
+/**
+ * //TODO:機能除却予定
+ */
 
 namespace App\Repositories;
 
