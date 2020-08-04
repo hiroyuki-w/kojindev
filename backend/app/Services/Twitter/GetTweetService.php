@@ -6,105 +6,43 @@
 
 namespace App\Services\Twitter;
 
-
 use App\Models\TrApplication;
 use App\Models\TrApplicationReport;
 use App\Models\TrUserProfile;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Arr;
 use Str;
 
 class GetTweetService
 {
-
     /**
-     * @var TwitterAppOAuth
+     * @var AppOAuth
      */
     private AppOAuth $connection;
-    private array $query = ['q' => ''];
-    /**
-     * @var CacheTweetService
-     */
-    private CacheTweetService $cacheTweetService;
+    const LIMIT_API_COUNT = 5;//APIのコール制限
+    const PERIOD_TWEET_REPORT_DAY = 14;//開発報告を収集する期間
+    const EXPIRES_API_ACCESS_HOUR = 3;//APIから値を再取得する制限時間
 
-    public function __construct(CacheTweetService $cacheTweetService)
+    /**
+     * @var SaveTweetService
+     */
+    private SaveTweetService $saveTweetService;
+
+    public function __construct(SaveTweetService $saveTweetService)
     {
-        $this->cacheTweetService = $cacheTweetService;
+        $this->saveTweetService = $saveTweetService;
         $this->connection = new AppOAuth(config('services.twitter.client_id'), config('services.twitter.client_secret'));
     }
 
     /**
-     * ツイッターAPI検索実行(結果をキャッシュする）
-     * @param int $tr_application_id
-     * @return array
-     */
-    private function search(int $tr_application_id): array
-    {
-        $param = [
-            'result_type' => 'recent',
-        ];
-        $param = array_merge($param, $this->getQuery());
-
-        $tweetData = $this->cacheTweetService->get($tr_application_id, $param);
-        if (empty($tweetData)) {
-            $tweetData = $this->connection->get('search/tweets', $param);
-            $this->cacheTweetService->put($tr_application_id, $param, $tweetData);
-        }
-
-        return json_decode($tweetData, JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-     * ツイッターAPI検索条件指定：アカウントで絞る
-     * @param $account_name
-     * @return GetTweetService
-     */
-    private function filterTwitterAccount($account_name): GetTweetService
-    {
-        $this->query['q'] .= "from:{$account_name} ";
-        return $this;
-    }
-
-    /**
-     * ツイッターAPI検索条件指定：ハッシュタグで絞る
-     * @param $tag
-     * @return GetTweetService
-     */
-    private function filterHashTag($tag): GetTweetService
-    {
-        $this->query['q'] .= "#{$tag}";
-        return $this;
-    }
-
-    /**
-     * ツイッターAPI検索条件指定：取得件数を設定する
-     * @param $count
-     * @return GetTweetService
-     */
-    private function setLimit($count): GetTweetService
-    {
-        $this->query['count'] = $count;
-        return $this;
-    }
-
-    /**
-     * 構築したツイッター検索条件テキストを取得
-     * @return array|string[]
-     */
-    private function getQuery(): array
-    {
-        return $this->query;
-    }
-
-    /**
      * ビューで利用する配列へ変換する
-     * @param array $res
+     * @param array $tweets
      * @param int $tr_application_id
      * @return array
      */
-    private function formatted(array $res, int $tr_application_id): array
+    private function formatted(array $tweets, int $tr_application_id): array
     {
-        $tweets = Arr::get($res, 'statuses', []);
         if (count($tweets) == 0) {
             return [];
         }
@@ -148,23 +86,92 @@ class GetTweetService
      * @param int $count
      * @return array
      */
-    public function getApplicationTweet(TrUserProfile $trUserProfile, TrApplication $trApplication, int $count): array
+    public function getApplicationTweet(TrUserProfile $trUserProfile, TrApplication $trApplication, int $count): Collection
     {
         if (empty($trUserProfile->twitter_account)) {
             return [];
         }
-        try {
-            $tweetData = $this
-                ->filterTwitterAccount($trUserProfile->twitter_account)
-                ->filterHashTag($trApplication->application_name)
-                ->setLimit($count)
-                ->search($trApplication->id);
-        } catch (\Exception $e) {
-            $tweetData = [];
+        $timeLineTweet = $this->getTimeLine($trUserProfile->twitter_account, Carbon::now()->subDay(self::PERIOD_TWEET_REPORT_DAY));
+        $reportTweet = $this->filterTimeline($timeLineTweet, $trApplication);
+
+        return collect($this->formatted($reportTweet, $trApplication->id))->slice(0, $count);
+    }
+
+    /**
+     * ユーザのタイムライン情報取得
+     * @param string $account
+     * @param Carbon $limitDate
+     * @return array
+     */
+    private function getTimeLine(string $account, Carbon $limitDate): array
+    {
+        $param = [
+            'count' => 200,
+            'screen_name' => $account,
+        ];
+        $savedData = $this->saveTweetService->get($account);
+        if (!empty($savedData)) {
+            $savedTime = $savedData['saved_datetime'];
+            $nowTime = Carbon::now();
+
+            //前回保存時間がN時間以内ならAPIアクセスせずに取得
+            if ($savedTime->diffInDays($nowTime) <= self::EXPIRES_API_ACCESS_HOUR) {
+                return $savedData;
+            }
         }
 
+        //N時間以上経過ならAPIから最新のデータを追加で取得
+        //取得期間に到達するか、キャッシュしているデータの先頭まで取得したらAPIからの取得終了
+        $tweetLeastId = Arr::get($savedData, '0.id');
+        $apiCount = 0;
+        $max_id = 0;
+        while (1) {
+            $tweetData = $this->connection->get('statuses/user_timeline', $param);
+            $apiCount++;
+            if ($apiCount > self::LIMIT_API_COUNT) {
+                break;
+            }
+            if (empty($tweetData)) {
+                break;
+            }
+            foreach ($tweetData as $tweet) {
+                //twitterAPIのタイムゾーンがUTCのため変換
+                $tweet_created_at = Carbon::create($tweet['created_at'])->timezone(config('app.timezone'));
+                //ツイート時間が$limitDate日以下かどうか
+                if ($tweet_created_at->lte($limitDate)) {
+                    //$tweet_created_atが$limitDate日、以下の日付
+                    break 2;
+                }
+                //保存しているデータの先頭まで到達したか
+                if ($tweet['id'] == $tweetLeastId) {
+                    //到達している
+                    break 2;
+                }
+                array_push($savedData, $tweet);
+                $max_id = $tweet['id'];
+            }
+            $param['max_id'] = $max_id - 1;
+        }
+        $this->saveTweetService->put($account, $param, $savedData);
+        return $savedData;
+    }
 
-        return $this->formatted($tweetData, $trApplication->id);
-
+    /**
+     * ツイートをタグでフィルタリング
+     * @param array $timeLineTweets
+     * @param TrApplication $trApplication
+     * @return array
+     */
+    private function filterTimeline(array $timeLineTweets, TrApplication $trApplication): array
+    {
+        $filteredTweet = [];
+        foreach ($timeLineTweets as $tweet) {
+            $hashtagsEntities = Arr::get($tweet, 'entities.hashtags', []);
+            $hashtags = array_column($hashtagsEntities, 'text', null);
+            if (in_array($trApplication->application_name, $hashtags)) {
+                $filteredTweet[] = $tweet;
+            }
+        }
+        return $filteredTweet;
     }
 }

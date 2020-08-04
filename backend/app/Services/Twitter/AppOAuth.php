@@ -86,6 +86,6 @@ class AppOAuth
 
         $context = stream_context_create($opts);
 
-        return file_get_contents($api_url, false, $context);
+        return json_decode(file_get_contents($api_url, false, $context), JSON_UNESCAPED_UNICODE);
     }
 }
