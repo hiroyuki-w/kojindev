@@ -114,7 +114,7 @@ class GetTweetService
             $nowTime = Carbon::now();
 
             //前回保存時間がN時間以内ならAPIアクセスせずに取得
-            if ($savedTime->diffInDays($nowTime) <= self::EXPIRES_API_ACCESS_HOUR) {
+            if ($savedTime->diffInHours($nowTime) <= self::EXPIRES_API_ACCESS_HOUR) {
                 return $savedData;
             }
         }
