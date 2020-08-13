@@ -11,8 +11,8 @@
                 <h1 class="first-view__catch">個人開発者コミュニティー</h1>
                 <h2 class="first-view__sub-catch">１人でWEBサービス、スマホアプリなどを開発している個人開発者のコミュニティ</h2>
                 <div class="first-view__login-form">
-                    <p>会員登録・ログイン</p>
-                    <div>
+                    <p class="u-bold mt-5">会員登録する</p>
+                    <div clsss="mt-5">
                         <a href="{{route('social.login',['provider' => 'google'])}}">
                             <button class="button button--login">Google</button>
                         </a>
