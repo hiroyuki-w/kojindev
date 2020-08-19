@@ -140,7 +140,7 @@
                                            class="social-icon-list__icon--twitter admin-action__item">報告を書く</a>
                                     </div>
                                     <div>
-                                        報告登録方法：アプロフィールにTwitterアカウントを設定し、プリケーション名をハッシュタグにしてツイート
+                                        報告登録方法：プロフィールにTwitterアカウントを設定し、アプリケーション名をハッシュタグにしてツイート
                                     </div>
 
                                 </div>
@@ -164,7 +164,10 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="mt-15 u-empty-content">報告の登録がありません<br>過去7日間のツイートを表示します</div>
+                                        <div class="mt-15 u-empty-content">
+                                            報告の登録がありません<br>過去{{app('App\Services\Twitter\GetTweetService')::PERIOD_TWEET_REPORT_DAY}}
+                                            日間のツイートを表示します
+                                        </div>
                                     @endforelse
                                 </div>
 

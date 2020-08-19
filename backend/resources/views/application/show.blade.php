@@ -89,7 +89,18 @@
         <p>開発者からのリリース報告などのコメントです</p>
         <div class="content content--small-width">
 
-            <div class="u-font-size-s u-bold mt-10">過去7日間のツイート(※反映に時間がかかります)</div>
+            <div class="u-font-size-s u-bold mt-10">
+                過去{{app('App\Services\Twitter\GetTweetService')::PERIOD_TWEET_REPORT_DAY}}日間のツイート(※反映に時間がかかります)
+            </div>
+            <div class="social-icon-list">
+                @if($trApplication->tr_user->tr_user_profile->twitter_account)
+                    <a target="_blank"
+                       href="https://twitter.com/{{$trApplication->tr_user->tr_user_profile->twitter_account}}"
+                       class="social-icon-list__link">
+                        <i class="social-icon-list__icon--twitter"></i>
+                    </a>
+                @endif
+            </div>
             <div class="develop-report">
                 @forelse($reports as $report)
                     <div class="develop-report__item">

@@ -21,7 +21,7 @@ class GetTweetService
      */
     private AppOAuth $connection;
     const LIMIT_API_COUNT = 5;//APIのコール制限
-    const PERIOD_TWEET_REPORT_DAY = 14;//開発報告を収集する期間
+    const PERIOD_TWEET_REPORT_DAY = 30;//開発報告を収集する期間
     const EXPIRES_API_ACCESS_HOUR = 3;//APIから値を再取得する制限時間
 
     /**
@@ -124,8 +124,10 @@ class GetTweetService
         $tweetLeastId = Arr::get($savedData, '0.id');
         $apiCount = 0;
         $max_id = 0;
+        $addTweet = [];
         while (1) {
             $tweetData = $this->connection->get('statuses/user_timeline', $param);
+            $tweetData = collect($tweetData)->sortByDesc('id')->toArray();
             $apiCount++;
             if ($apiCount > self::LIMIT_API_COUNT) {
                 break;
@@ -146,11 +148,12 @@ class GetTweetService
                     //到達している
                     break 2;
                 }
-                array_push($savedData, $tweet);
+                array_push($addTweet, $tweet);
                 $max_id = $tweet['id'];
             }
             $param['max_id'] = $max_id - 1;
         }
+        $savedData = array_merge($addTweet, $savedData);
         $this->saveTweetService->put($account, $param, $savedData);
         return $savedData;
     }
