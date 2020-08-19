@@ -28,6 +28,10 @@ span.line::after {
     margin-right: 5px;
 }
 
+.u-display-block {
+    display: block !important;
+}
+
 .block-center {
     margin-left: auto;
     margin-right: auto;

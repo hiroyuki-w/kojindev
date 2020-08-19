@@ -10,3 +10,12 @@
 .icon-font--applist:before {
     content: "\f126";
 }
+
+.icon-font--twitter:before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f099";
+}
+
+.icon-font--edit:before {
+    content: "\f044";
+}

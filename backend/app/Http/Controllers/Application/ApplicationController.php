@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Application;
 
 use App\Repositories\TrApplicationRepository;
+use App\Repositories\TrFeedbackRepository;
 use App\Services\ApplicationService;
 use App\Services\Twitter\GetTweetService as GetTweetService;
 use Auth;
@@ -37,6 +38,10 @@ class ApplicationController extends Controller
      * @var ApplicationService
      */
     private ApplicationService $applicationService;
+    /**
+     * @var TrFeedbackRepository
+     */
+    private TrFeedbackRepository $trFeedbackRepository;
 
     public function __construct(
         trApplicationCommentRepository $trApplicationCommentRepository,
@@ -44,7 +49,9 @@ class ApplicationController extends Controller
         TrApplicationTagRepository $trApplicationTagRepository,
         UploadImageService $uploadImageService,
         ApplicationService $applicationService,
-        GetTweetService $getTweetService
+        GetTweetService $getTweetService,
+        TrFeedbackRepository $trFeedbackRepository
+
     )
     {
         $this->trApplicationReportRepository = $trApplicationReportRepository;
@@ -53,6 +60,7 @@ class ApplicationController extends Controller
         $this->uploadImageService = $uploadImageService;
         $this->applicationService = $applicationService;
         $this->getTweetService = $getTweetService;
+        $this->trFeedbackRepository = $trFeedbackRepository;
 
     }
 
@@ -61,10 +69,11 @@ class ApplicationController extends Controller
         $this->authorize('published', $trApplication);
 
         $reports = $this->getTweetService->getApplicationTweet($trApplication->tr_user->tr_user_profile, $trApplication, 10);
+        $feedbacks = $this->trFeedbackRepository->getListByApplicationId($trApplication->id);
         $comments = $this->trApplicationCommentRepository->getListByApplicationId($trApplication->id, 10);
 
         return view('application.show',
-            compact('trApplication', 'reports', 'comments')
+            compact('trApplication', 'reports', 'feedbacks', 'comments')
         );
     }
 

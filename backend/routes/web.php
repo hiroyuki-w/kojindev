@@ -55,8 +55,23 @@ Route::group(['namespace' => 'Application'], function () {
     Route::get('/application/{trApplication}', 'ApplicationController@show')->where('trApplication', '[0-9]+')->name('application.show');
     Route::get('/application/search/{tag?}', 'ApplicationController@search')->name('application.search');
 
+});
+
+//フィードバック
+Route::group(['namespace' => 'Application\Feedback'], function () {
+    Route::get('/application/feedback/{trFeedback}', 'FeedbackController@show')->where('trFeedback', '[0-9]+')->name('feedback.show');
+    Route::get('/application/{trApplication}/feedbacklist', 'FeedbackController@list')->name('application.feedbacklist');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::post('/application/feedback/{trFeedback}/comment/', 'CommentController@store')->name('feedback.comment.store');
+        Route::get('/application/feedback/comment/complete', 'CommentController@complete')->name('feedback.comment.complete');
+        Route::get('/application/{trApplication}/feedback/edit/{trFeedback?}', 'FeedbackController@edit')->name('feedback.edit');
+        Route::post('/application/{trApplication}/feedback/store/{trFeedback?}', 'FeedbackController@store')->name('feedback.store');
+        Route::get('/application/feedback/complete', 'FeedbackController@complete')->name('feedback.complete');
+        Route::delete('/application/feedback/delete/{trFeedback}', 'FeedbackController@delete')->name('feedback.delete');
+    });
 
 });
+
 
 //ユーザページ
 Route::get('/user/{trUser}/', 'UserController@detail')->where('trUser', '[0-9]+')->name('user.detail');

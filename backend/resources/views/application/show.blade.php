@@ -85,6 +85,36 @@
 
     </section>
     <section class="section">
+        <h2 class="head-title head-title--section-title">フィードバック募集</h2>
+        <div class="content mt-10">
+            <div class="col-pc-2-mobile-1">
+                @forelse($feedbacks as $feedback)
+                    <div class="col-pc-2-mobile-1__cel">
+                        <div class="feedback">
+                            <div class="feedback--title">
+                                {{$feedback->feedback_title}}
+                            </div>
+                            <div class="feedback--footer">
+                                <div class="button--feedback">
+                                    <a href="{{route('feedback.show',$feedback)}}">
+                                        <button class="button button--default">詳細
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                @empty
+                    <div class="mt-15 u-empty-content">まだフィードバック募集がありません
+                    </div>
+                @endforelse
+
+
+            </div>
+        </div>
+    </section>
+    <section class="section">
         <h2 class="head-title head-title--section-title">開発報告</h2>
         <p>開発者からのリリース報告などのコメントです</p>
         <div class="content content--small-width">

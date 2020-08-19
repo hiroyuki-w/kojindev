@@ -1,0 +1,29 @@
+.feedback {
+    width: 90%;
+    border-top: 3px solid #47b2e4;
+
+
+    background: #fff;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+    padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.feedback--title {
+    color: #37517e;
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.feedback--footer {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}

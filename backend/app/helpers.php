@@ -26,3 +26,45 @@ function ee($string)
     return $string;
 }
 
+/**
+ * フィードバック投稿完了後のツイートボタンに設定するテキストパラメータ
+ * @param $account
+ * @param $message
+ * @param $url
+ * @return string
+ */
+function get_feed_back_tweet_text($account, $message, $url)
+{
+    $text = '';
+    $text .= $message . "\n\n";
+    $text .= '@' . $account . " さんへ\n";
+    $text .= $url . "\n";
+    return urlencode($text);
+}
+
+function get_feed_share_tweet_text($message, $url)
+{
+    $text = '';
+    $text .= $message . "\n\n";
+    $text .= $url . "\n";
+    return urlencode($text);
+}
+
+/**
+ * フィードバックコメントのデフォルトテキスト
+ * @param $no1
+ * @param $no2
+ * @param $no3
+ * @return string
+ */
+function get_feed_back_comment_default($no1, $no2, $no3)
+{
+    $text = '【' . $no1 . '】';
+    if ($no2) {
+        $text .= "\n\n\n" . '【' . $no2 . '】';
+    }
+    if ($no3) {
+        $text .= "\n\n\n" . '【' . $no3 . '】';
+    }
+    return $text;
+}

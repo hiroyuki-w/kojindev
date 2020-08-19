@@ -93,6 +93,11 @@ class TrApplication extends Model
         return $this->hasMany(TrApplicationTag::class);
     }
 
+    public function tr_feedbacks(): HasMany
+    {
+        return $this->hasMany(TrFeedback::class);
+    }
+
 
     /**
      * 公開OKなサービスリスト取得

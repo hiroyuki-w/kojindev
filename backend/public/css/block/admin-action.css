@@ -3,15 +3,18 @@
     padding: 10px;
 }
 
+.admin-action__p0 {
+    padding: 0px;
+}
+
 .admin-action__list {
     display: flex;
 }
 
 .admin-action__item {
     display: block;
-    padding: .40em .4em;
+    padding: .8em .9em;
     font-size: 1em;
-    width: 130px;
     line-height: 1;
     text-align: center;
     white-space: nowrap;
@@ -35,7 +38,6 @@
 
 .admin-action__item--large {
     font-size: 1.4em;
-    width: 250px;
 }
 
 .admin-action__list--center {

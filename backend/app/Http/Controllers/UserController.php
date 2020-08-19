@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TrUser;
 use App\Repositories\TrApplicationReportRepository;
 use App\Repositories\TrApplicationRepository;
+use App\Repositories\TrFeedbackRepository;
 use App\Repositories\TrUserRepository;
 use App\Services\ApplicationImageService;
 use App\Services\Twitter\GetTweetService;
@@ -29,12 +30,14 @@ class UserController extends Controller
     public function __construct(
         TrApplicationRepository $trApplicationRepository,
         TrApplicationReportRepository $trApplicationReportRepository,
-        GetTweetService $getTweetService
+        GetTweetService $getTweetService,
+        TrFeedbackRepository $feedbackRepository
     )
     {
         $this->trApplicationRepository = $trApplicationRepository;
         $this->trApplicationReportRepository = $trApplicationReportRepository;
         $this->getTweetService = $getTweetService;
+        $this->feedbackRepository = $feedbackRepository;
 
     }
 
@@ -48,11 +51,12 @@ class UserController extends Controller
                 return $application->public_flg == FLG_ON;
             });
         }
+        $feedbacksHash = $this->feedbackRepository->getListByApplicationIds($applications->pluck('id')->toArray(), 2);
         $applicationReports = $this->getTweetService->getApplicationTweetMany($trUser->tr_user_profile, $applications, 10);
 
         return view('user.detail',
             compact(
-                'trUser', 'applications', 'applicationReports'
+                'trUser', 'applications', 'applicationReports', 'feedbacksHash'
             ));
     }
 

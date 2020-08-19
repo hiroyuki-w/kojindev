@@ -50,6 +50,10 @@
     height: 200px;
 }
 
+.input-form__input--h5em {
+    height: 5em;
+}
+
 .input-form__submit {
     text-align: center;
 }

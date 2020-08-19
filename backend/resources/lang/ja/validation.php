@@ -170,6 +170,11 @@ return [
         'twitter_account' => 'ツイッターアカウント',
         'my_url' => '個人HP等',
         'profile_upload_image' => 'プロフィールアイコン',
+        'feedback_comment' => 'フィードバック内容',
+        'feedback_title' => '募集タイトル',
+        'question_1' => '設問１',
+        'question_2' => '設問２',
+        'question_3' => '設問３',
 
 
     ],

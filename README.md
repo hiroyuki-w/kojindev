@@ -45,6 +45,18 @@ Google/GithubのAPIキー取得方法については、以下参考に
 [Google](https://cloud.google.com/docs/authentication/api-keys)  
 [GitHub](https://developer.github.com/apps/building-oauth-apps/)  
 
+- 疎通確認  
+下記URLへアクセス  
+https://local.kojin.dev:8020/
+
+
 ## 設計
-- ER図
+- ER図  
+
 ![ER図](diagram.png "ER図")
+
+## コンタクト  
+開発者へ連絡を取りたい場合は以下のメールか、Twitterへ  
+kojin.dev@gmail.com  
+https://twitter.com/kojindev  
+

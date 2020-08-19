@@ -19,6 +19,10 @@ PC２カラム、モバイル1カラム
     flex-basis: 50%;
 }
 
+.col-pc-2-mobile-1__100per {
+    flex-basis: 100%;
+}
+
 .col-pc-2-mobile-1__cel--padding-1 {
     padding: 1px;
 }

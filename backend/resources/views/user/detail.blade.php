@@ -48,7 +48,7 @@
                             @endcannot
                             ">
                             <div class="admin-action__list admin-action__list--center">
-                                <a href="{{route('user.edit')}}" class="admin-action__item">プロフィール編集</a>
+                                <a href="{{route('user.edit')}}" class="admin-action__item icon-font icon-font--edit">プロフィール編集</a>
                             </div>
 
                         </div>
@@ -82,7 +82,7 @@
                         ">
                         <div class="admin-action__list admin-action__list--center">
                             <a href="{{route('application.create')}}"
-                               class="admin-action__item admin-action__item--large">アプリケーションを追加する</a>
+                               class="admin-action__item admin-action__item--large icon-font icon-font--edit">アプリケーションを追加する</a>
                         </div>
 
                     </div>
@@ -95,7 +95,42 @@
                                 ">
                                 <div class="admin-action__list">
                                     <a href="{{route('application.edit',['trApplication' => $application->id])}}"
-                                       class="admin-action__item">編集する</a>
+                                       class="admin-action__item icon-font icon-font--edit">編集</a>
+                                    <a href=""
+                                       class="admin-action__item js-modal-confirm-open icon-font icon-font--edit"
+                                       target-modal="js-modal-confirm__toggle-published-flg">
+                                        {{$application->public_flg == FLG_ON ? '非公開':'公開'}}に変更</a>
+                                    <div class="modal-confirm js-modal-confirm js-modal-confirm__toggle-published-flg">
+                                        <div class="modal-confirm__bg js-modal-confirm-close"></div>
+                                        <div class="modal-confirm__content">
+                                            <p class="modal-confirm__title">
+                                                {{$application->public_flg == FLG_ON ? '非公開':'公開'}}設定にしますか？
+                                            </p>
+                                            <p class="modal-confirm__message">
+                                                非公開にすると、自分以外のユーザからは閲覧、検索できなくなります。こちらの画面から再び公開設定に戻すことが可能です。</p>
+                                            {{Form::open(['method'=>'patch','route' => ['application.togglePublicFlg','trApplication'=>$application->id ]] )}}
+                                            <input type="submit" class="button button--default mt-20"
+                                                   value="{{$application->public_flg == FLG_ON ? '非公開':'公開'}}に変更">
+                                            {{Form::close()}}
+                                        </div>
+                                    </div>
+                                    <a href=""
+                                       class="admin-action__item  admin-action__item--danger js-modal-confirm-open icon-font icon-font--edit"
+                                       target-modal="js-modal-confirm__application-delete ">削除</a>
+                                    <div class="modal-confirm js-modal-confirm js-modal-confirm__application-delete">
+                                        <div class="modal-confirm__bg js-modal-confirm-close"></div>
+                                        <div class="modal-confirm__content">
+                                            <p class="modal-confirm__title">削除しますか？</p>
+                                            <p class="modal-confirm__message">
+                                                【{{$application->application_name}}】に関連する情報を完全削除します。<br>
+                                                過去にされた、アプリケーションに関連する報告やコメントがすべて削除されます。<br>
+                                                削除後はデータをもとに戻すことはできません。</p>
+                                            {{Form::open(['method'=>'delete','route' => ['application.delete','trApplication'=>$application->id ]] )}}
+
+                                            <input type="submit" class="button button--default mt-20" value="完全に削除する">
+                                            {{Form::close()}}
+                                        </div><!--modal__inner-->
+                                    </div>
                                 </div>
 
                             </div>
@@ -128,10 +163,90 @@
                                 </div>
                             </div>
                             <div class="application-detail-card__report">
+
+                                <div class="admin-action
+                                @cannot('edit',$trUser)
+                                    display-none
+                                @endcannot
+                                    ">
+                                    <div class="admin-action__list">
+                                        <a href="{{route('feedback.edit',[$application]) }}"
+                                           class="admin-action__item icon-font icon-font--edit">新規フィードバック募集</a>
+                                    </div>
+                                </div>
+                                <div class="col-pc-2-mobile-1">
+                                    @forelse($feedbacksHash[$application->id] as $feedback)
+                                        <div class="col-pc-2-mobile-1__cel">
+                                            <div class="feedback">
+                                                <div class="feedback_head">
+                                                    <div class="admin-action admin-action__p0
+                                                    @cannot('edit',$trUser)
+                                                        display-none
+                                                    @endcannot
+                                                        ">
+                                                        <div class="admin-action__list">
+                                                            <a href="{{route('feedback.edit',[$application,$feedback]) }}"
+                                                               class="admin-action__item icon-font icon-font--edit">編集</a>
+                                                            <a href=""
+                                                               class="admin-action__item  admin-action__item--danger js-modal-confirm-open icon-font icon-font--edit"
+                                                               target-modal="js-modal-confirm__feedback-delete">削除する</a>
+                                                            <div
+                                                                class="modal-confirm js-modal-confirm js-modal-confirm__feedback-delete">
+                                                                <div
+                                                                    class="modal-confirm__bg js-modal-confirm-close"></div>
+                                                                <div class="modal-confirm__content">
+                                                                    <p class="modal-confirm__title">フィードバックを削除しますか？</p>
+                                                                    <p class="modal-confirm__message">
+                                                                        【{{$feedback->feedback_title}}】のフィードバックを完全削除します。<br>
+                                                                        過去にされた、フィードバックコメントもすべて削除されます。<br>
+                                                                        削除後はデータをもとに戻すことはできません。</p>
+                                                                    {{Form::open(['method'=>'delete','route' => ['feedback.delete',$feedback ]] )}}
+
+                                                                    <input type="submit"
+                                                                           class="button button--default mt-20"
+                                                                           value="完全に削除する">
+                                                                    {{Form::close()}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feedback--title">
+                                                    {{$feedback->feedback_title}}
+                                                </div>
+                                                <div class="feedback--footer">
+                                                    <div class="button--feedback">
+                                                        <a href="{{route('feedback.show',$feedback)}}">
+                                                            <button class="button button--default">詳細
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    @empty
+                                        <div class="mt-15 u-empty-content">まだフィードバック募集がありません
+                                        </div>
+                                    @endforelse
+                                    @if(isset($feedbacksHash[$application->id]) && count($feedbacksHash[$application->id]) >= 2 )
+                                        <div class="block-center">
+                                            <a href="{{route('application.feedbacklist',$application)}}"
+                                               class="button button--default">
+                                                もっと見る...
+                                            </a>
+                                        </div>
+                                    @endif
+
+                                </div>
+
+
                                 <div class="admin-action
                                     @cannot('edit',$trUser)
                                     display-none
-                                    @endcannot
+@endcannot
                                     ">
                                     <div class="admin-action__list">
                                         <a target="_blank"
@@ -158,7 +273,7 @@
                                                 class="develop-report__toggle js-develop-report-toggle-block
                                                 @if (!$loop->first)
                                                     display-none
-                                                @endif
+@endif
                                                     ">
                                                 {!! ee($report->report_text) !!}
                                             </div>
@@ -175,44 +290,10 @@
                             <div class="admin-action
                                 @cannot('edit',$trUser)
                                 display-none
-                                @endcannot
+@endcannot
                                 ">
                                 <div class="admin-action__list admin-action__list--right">
-                                    <a href="" class="admin-action__item js-modal-confirm-open"
-                                       target-modal="js-modal-confirm__toggle-published-flg">
-                                        {{$application->public_flg == FLG_ON ? '非公開':'公開'}}に変更</a>
-                                    <a href=""
-                                       class="admin-action__item  admin-action__item--danger js-modal-confirm-open"
-                                       target-modal="js-modal-confirm__application-delete">削除する</a>
 
-                                    <div class="modal-confirm js-modal-confirm js-modal-confirm__toggle-published-flg">
-                                        <div class="modal-confirm__bg js-modal-confirm-close"></div>
-                                        <div class="modal-confirm__content">
-                                            <p class="modal-confirm__title">
-                                                {{$application->public_flg == FLG_ON ? '非公開':'公開'}}設定にしますか？
-                                            </p>
-                                            <p class="modal-confirm__message">
-                                                非公開にすると、自分以外のユーザからは閲覧、検索できなくなります。こちらの画面から再び公開設定に戻すことが可能です。</p>
-                                            {{Form::open(['method'=>'patch','route' => ['application.togglePublicFlg','trApplication'=>$application->id ]] )}}
-                                            <input type="submit" class="button button--default mt-20"
-                                                   value="{{$application->public_flg == FLG_ON ? '非公開':'公開'}}に変更">
-                                            {{Form::close()}}
-                                        </div>
-                                    </div>
-                                    <div class="modal-confirm js-modal-confirm js-modal-confirm__application-delete">
-                                        <div class="modal-confirm__bg js-modal-confirm-close"></div>
-                                        <div class="modal-confirm__content">
-                                            <p class="modal-confirm__title">削除しますか？</p>
-                                            <p class="modal-confirm__message">
-                                                【{{$application->application_name}}】に関連する情報を完全削除します。<br>
-                                                過去にされた、アプリケーションに関連する報告やコメントがすべて削除されます。<br>
-                                                削除後はデータをもとに戻すことはできません。</p>
-                                            {{Form::open(['method'=>'delete','route' => ['application.delete','trApplication'=>$application->id ]] )}}
-
-                                            <input type="submit" class="button button--default mt-20" value="完全に削除する">
-                                            {{Form::close()}}
-                                        </div><!--modal__inner-->
-                                    </div>
 
                                 </div>
 

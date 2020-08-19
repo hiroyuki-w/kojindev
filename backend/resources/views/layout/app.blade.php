@@ -23,8 +23,11 @@
     <title>@yield('titleTag') | 個人.dev</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
+@section('twitterCard')
 
-    <!-- Favicons -->
+@show
+
+<!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -67,6 +70,7 @@
     <link href="/css/block/pagination.css" rel="stylesheet">
     <link href="/css/block/user-card.css" rel="stylesheet">
     <link href="/css/block/line-form.css" rel="stylesheet">
+    <link href="/css/block/feedback.css" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 

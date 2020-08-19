@@ -31,6 +31,12 @@ class InitSeeder extends Seeder
                     factory(App\Models\TrApplicationComment::class, 6)->create([
                         'tr_application_id' => $trApplication->id, 'tr_user_id' => random_int(1, self::USER_COUNT)
                     ]);
+                    factory(App\Models\TrFeedback::class, 3)->create(['tr_application_id' => $trApplication->id])
+                        ->each(function (App\Models\TrFeedback $trFeedback) {
+                            factory(App\Models\TrFeedbackComment::class, 4)->create(
+                                ['tr_feedback_id' => $trFeedback->id, 'comment_tr_user_id' => random_int(1, self::USER_COUNT)]);
+                        });
+
                 });
         });
     }
