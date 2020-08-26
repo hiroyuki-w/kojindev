@@ -13,7 +13,7 @@
     <meta name="twitter:site"
           content="{{$trFeedback->tr_application->tr_user->tr_user_profile->twitter_account ? '@'.$trFeedback->tr_application->tr_user->tr_user_profile->twitter_account: '@kojindev'}}"/>
     <meta property="og:url" content="{{route('feedback.show',['trFeedback'=>$trFeedback])}}"/>
-    <meta property="og:title" content="フィードバック募集中"/>
+    <meta property="og:title" content="{{$trFeedback->feedback_title}}"/>
     <meta property="og:description" content="{{$trFeedback->feedback_title}}"/>
     <meta property="og:image" content="{{current($trFeedback->tr_application->application_thumbnails)}}"/>
 @endsection
