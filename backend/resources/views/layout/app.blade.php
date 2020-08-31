@@ -12,14 +12,21 @@
         }
 
         gtag('js', new Date());
-
+        @if(empty($viewPage))
         gtag('config', '{{env('GOOGLE_ANALYTICS_TRACKING_ID')}}');
+        @else
+        gtag('config', '{{env('GOOGLE_ANALYTICS_TRACKING_ID')}}', {'page_path': '{{$viewPage}}'});
+        @endif
+
+
     </script>
 
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    @if(!empty($canonical))
+        <link rel="canonical" href="{{env('APP_URL')}}{{$canonical}}">
+    @endif
     <title>@yield('titleTag') | 個人.dev</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">

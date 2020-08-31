@@ -1,4 +1,4 @@
-@extends('layout/app')
+@extends('layout/app',['viewPage'=>session('isNew') ? '/auth/user/complete/new':''])
 @section('titleTag', 'ユーザ情報更新完了')
 @section('navCategoryName', 'ユーザ')
 @section('navPageName', 'ユーザ情報更新完了')

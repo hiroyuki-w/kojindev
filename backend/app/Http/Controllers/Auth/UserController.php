@@ -21,6 +21,7 @@ class UserController extends Controller
 
     public function store(UserProfileRequest $request, AuthUserService $authUserService)
     {
+        $isNew = Auth::user() ? false : true;
         $trUser = $authUserService->saveUserProfile(
             $request->validated(),
             Auth::user() ?? new TrUser,
@@ -28,7 +29,7 @@ class UserController extends Controller
 
         Auth::login($trUser, true);
 
-        return redirect()->route('user.complete');
+        return redirect()->route('user.complete')->with('isNew', $isNew);
     }
 
     public function complete()

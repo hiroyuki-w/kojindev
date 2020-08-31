@@ -1,4 +1,4 @@
-@extends('layout/app')
+@extends('layout/app',['canonical' => '/'])
 @section('navContents')
 
 @endsection
@@ -7,8 +7,9 @@
     <section class="first-view">
 
         <div class="first-view__message">
-            <h1 class="first-view__catch">ログインする</h1>
+            <h1 class="first-view__catch">ログイン/会員登録する</h1>
             <h2 class="first-view__sub-catch">１人でWEBサービス、スマホアプリなどを開発している個人開発者のコミュニティ</h2>
+            <p>他の開発者からのフィードバックを募集できる</p>
             <div class="first-view__login-form">
                 <p>ログイン</p>
                 <div>
