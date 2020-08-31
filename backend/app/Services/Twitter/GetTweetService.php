@@ -73,10 +73,10 @@ class GetTweetService
         foreach ($trApplications as $trApplication) {
             $tweets = array_merge(
                 $tweets,
-                $this->getApplicationTweet($trUserProfile, $trApplication)
+                $this->getApplicationTweet($trUserProfile, $trApplication, $count)
             );
         }
-        return collect($tweets)->slice(0, $count);
+        return collect($tweets);
     }
 
     /**
@@ -85,7 +85,7 @@ class GetTweetService
      * @param TrApplication $trApplication
      * @return array
      */
-    public function getApplicationTweet(TrUserProfile $trUserProfile, TrApplication $trApplication): array
+    public function getApplicationTweet(TrUserProfile $trUserProfile, TrApplication $trApplication, int $count): array
     {
         if (empty($trUserProfile->twitter_account)) {
             return [];
@@ -93,7 +93,8 @@ class GetTweetService
         $timeLineTweet = $this->getTimeLine($trUserProfile->twitter_account, Carbon::now()->subDay(self::PERIOD_TWEET_REPORT_DAY));
         $reportTweet = $this->filterTimeline($timeLineTweet, $trApplication);
 
-        return $this->formatted($reportTweet, $trApplication->id);
+
+        return array_slice($this->formatted($reportTweet, $trApplication->id), 0, $count);
     }
 
     /**
