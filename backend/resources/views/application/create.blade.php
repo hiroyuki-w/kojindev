@@ -14,7 +14,7 @@
                     <span class="badge badge--required">必須</span><label class="input-form__label">アプリケーション名</label>
                     <p class="input-form__error-message {{$errors->first('application_name') ? 'has-error':'' }}">
                         {{$errors->first('application_name')}}</p>
-                    <input placeholder="ex)個人.dev" type="text" name="application_name"
+                    <input placeholder="ex)個人dev" type="text" name="application_name"
                            class="input-form__input input-form__input--w50per"
                            value="{{old('application_name',$trApplication->application_name)}}">
                 </div>

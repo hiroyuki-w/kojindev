@@ -39,7 +39,7 @@
     @endif
     <section class="section">
         <div class="content">
-            <h2 class="head-title head-title--section-title">「個人.dev」とは？</h2>
+            <h2 class="head-title head-title--section-title">「個人dev」とは？</h2>
             <p class="u-font-size-s">
                 個人でウェブサービス、ネイティブアプリケーションを個人開発している人が、自分の成果物を発表したり、リリース情報などを発表できる場です。<br><br>
                 自分のアプリケーションの宣伝や、他の個人開発している人たちを見つけて交流したりすることを目的にサイトをオープンしました。<br><br>
