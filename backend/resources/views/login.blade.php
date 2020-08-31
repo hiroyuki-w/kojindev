@@ -1,4 +1,5 @@
 @extends('layout/app',['canonical' => '/'])
+@section('titleTag', 'ログイン')
 @section('navContents')
 
 @endsection
