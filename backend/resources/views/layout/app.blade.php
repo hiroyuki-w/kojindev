@@ -27,7 +27,7 @@
     @if(!empty($canonical))
         <link rel="canonical" href="{{env('APP_URL')}}{{$canonical}}">
     @endif
-    <title>@yield('titleTag') | 個人.dev</title>
+    <title>@yield('titleTag') | 個人dev 個人開発者コミュニティ</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 @section('twitterCard')
@@ -92,7 +92,7 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header">
 
-    <h1 class="header__logo"><a href="/">個人.dev</a></h1>
+    <h1 class="header__logo"><a href="/">個人dev</a></h1>
 
     <nav class="header__right">
         <ul class="header__ling-group">
