@@ -53,7 +53,7 @@ https://local.kojin.dev:8020/
 ## 設計
 - ER図  
 
-![ER図](diagram.png "ER図")
+![ER図](er.png "ER図")
 
 ## コンタクト  
 開発者へ連絡を取りたい場合は以下のメールか、Twitterへ  
