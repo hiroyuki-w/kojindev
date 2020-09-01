@@ -96,9 +96,10 @@
 
     <nav class="header__right">
         <ul class="header__ling-group">
-            <li class="header__link"><a href="/">トップ</a></li>
             @if(Auth::user())
                 <li class="header__link"><a href="{{route('user.me')}}">マイページ</a></li>
+            @else
+                <li class="header__link"><a href="{{route('login')}}">アプリを投稿</a></li>
             @endif
         </ul>
     </nav>
