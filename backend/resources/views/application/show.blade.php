@@ -35,8 +35,8 @@
                     </h4>
                     <div class="application-spec__description">
                         <p>
-                            <i class=" fas fa-lg fa-external-link-alt"></i>
-                            <a href="{{$trApplication->application_url}}">{{$trApplication->application_url}}</a></p>
+                            <i class="fas fa-lg fa-external-link-alt"><a href="{{$trApplication->application_url}}">アプリケーションURL</a></i>
+                        </p>
                         {!! ee($trApplication->application_overview) !!}
                     </div>
                 </div>
