@@ -87,14 +87,17 @@ class GetTweetService
      */
     public function getApplicationTweet(TrUserProfile $trUserProfile, TrApplication $trApplication, int $count): array
     {
-        if (empty($trUserProfile->twitter_account)) {
+        try {
+            if (empty($trUserProfile->twitter_account)) {
+                return [];
+            }
+            $timeLineTweet = $this->getTimeLine($trUserProfile->twitter_account, Carbon::now()->subDay(self::PERIOD_TWEET_REPORT_DAY));
+            $reportTweet = $this->filterTimeline($timeLineTweet, $trApplication);
+            return array_slice($this->formatted($reportTweet, $trApplication->id), 0, $count);
+        } catch (\Exception $e) {
+            report($e);
             return [];
         }
-        $timeLineTweet = $this->getTimeLine($trUserProfile->twitter_account, Carbon::now()->subDay(self::PERIOD_TWEET_REPORT_DAY));
-        $reportTweet = $this->filterTimeline($timeLineTweet, $trApplication);
-
-
-        return array_slice($this->formatted($reportTweet, $trApplication->id), 0, $count);
     }
 
     /**

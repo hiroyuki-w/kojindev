@@ -26,12 +26,17 @@ class AppOAuth
      */
     public function __construct($consumer_key, $consumer_secret)
     {
-        $cache_key = self::CACHE_PREFIX . serialize([$consumer_key, $consumer_secret]);
-        $this->_bearer_token = Cache::get($cache_key, function () use ($cache_key, $consumer_key, $consumer_secret) {
-            $token = $this->_getBearerToken($consumer_key, $consumer_secret);
-            Cache::forever($cache_key, $token);
-            return $token;
-        });
+        try {
+            $cache_key = self::CACHE_PREFIX . serialize([$consumer_key, $consumer_secret]);
+            $this->_bearer_token = Cache::get($cache_key, function () use ($cache_key, $consumer_key, $consumer_secret) {
+                $token = $this->_getBearerToken($consumer_key, $consumer_secret);
+                Cache::forever($cache_key, $token);
+                return $token;
+            });
+        } catch (\Exception $e) {
+            report($e);
+            return '';
+        }
     }
 
     /**
