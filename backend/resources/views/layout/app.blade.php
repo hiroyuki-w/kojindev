@@ -27,7 +27,7 @@
     @if(!empty($canonical))
         <link rel="canonical" href="{{env('APP_URL')}}{{$canonical}}">
     @endif
-    <title>@yield('titleTag') | 個人dev 個人開発者コミュニティ</title>
+    <title>@yield('titleTag') | アプリケーションの告知、宣伝をしよう｜個人開発者コミュニティ 個人dev </title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 @section('twitterCard')

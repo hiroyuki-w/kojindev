@@ -1,5 +1,5 @@
 @extends('layout/app')
-@section('titleTag',$trApplication->application_name.' | '.'フィードバック募集一覧')
+@section('titleTag',$trApplication->application_name)
 
 @section('navCategoryName', $trApplication->application_name)
 @section('navPageName', 'フィードバック募集')

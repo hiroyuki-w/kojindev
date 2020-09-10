@@ -1,5 +1,5 @@
 @extends('layout/app')
-@section('titleTag',$trFeedback->tr_application->application_name.' | '.'フィードバック募集')
+@section('titleTag',$trFeedback->tr_application->application_name)
 
 @section('navCategoryName')
     <a href="{{route('application.show',[$trFeedback->tr_application])}}">

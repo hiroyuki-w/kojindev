@@ -1,5 +1,5 @@
 @extends('layout/app')
-@section('titleTag', $tag ? $tag: 'アプリケーション検索結果')
+@section('titleTag', $tag ? $tag: '個人開発 検索結果')
 @section('navCategoryName', 'アプリケーション')
 @section('navPageName', $tag ? sprintf("「%s」の検索結果",$tag): '検索結果')
 @section('mainContents')

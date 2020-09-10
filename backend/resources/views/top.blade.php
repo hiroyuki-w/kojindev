@@ -9,7 +9,7 @@
 
             <div class="first-view__message">
                 <h1 class="first-view__catch">個人開発者コミュニティー</h1>
-                <h2 class="first-view__sub-catch">１人でWEBサービス、スマホアプリなどを開発している個人開発者のコミュニティ</h2>
+                <h2 class="first-view__sub-catch">個人開発したアプリケーションの告知、宣伝が出来ます</h2>
                 <div class="first-view__login-form">
                     <p class="u-bold mt-5">会員登録する</p>
                     <div clsss="mt-5">
@@ -41,7 +41,7 @@
         <div class="content">
             <h2 class="head-title head-title--section-title">「個人dev」とは？</h2>
             <p class="u-font-size-s">
-                個人でウェブサービス、ネイティブアプリケーションを個人開発している人が、自分の成果物を発表したり、リリース情報などを発表できる場です。<br><br>
+                個人でウェブサービス、ネイティブアプリケーションを個人開発している人が、自分の成果物を告知、宣伝したり、リリース情報などを発表できる場です。<br><br>
                 自分のアプリケーションの宣伝や、他の個人開発している人たちを見つけて交流したりすることを目的にサイトをオープンしました。<br><br>
                 なお、本サイトも個人開発で運営されており、利用している技術の詳細は<a href="{{route('user.detail',['trUser' => 1])}}">こちら</a>です。
 
