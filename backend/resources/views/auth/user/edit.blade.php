@@ -11,7 +11,7 @@
             <div class="input-form mt-30">
                 {{Form::open(['method'=>'post','files' => true,'route' => ['user.store'],'class' => 'input-form__formtag'])}}
                 <div class="input-form__item">
-                    <span class="badge badge--required">必須</span><label class="input-form__label">ユーザ名</label>
+                    <span class="badge badge--required">必須</span><label class="input-form__label">ユーザ名(32文字)</label>
                     <p class="input-form__error-message {{$errors->first('user_name') ? 'has-error':'' }}">
                         {{$errors->first('user_name')}}</p>
                     <input placeholder="ex)hiro" type="text" name="user_name"
@@ -19,7 +19,8 @@
                            value="{{old('user_name',$trUser->user_name)}}">
                 </div>
                 <div class="input-form__item">
-                    <span class="badge badge--required">必須</span><label class="input-form__label">ユーザプロフィール</label>
+                    <span class="badge badge--required">必須</span><label
+                        class="input-form__label">ユーザプロフィール(500文字)</label>
                     <p class="input-form__error-message {{$errors->first('user_profile') ? 'has-error':'' }}">
                         {{$errors->first('user_profile')}}</p>
                     <textarea placeholder="ex)自己紹介等"
@@ -27,7 +28,7 @@
                               class="input-form__input input-form__input--h200px">{{old('user_profile',$trUser->id ? $trUser->tr_user_profile->user_profile:'')}}</textarea>
                 </div>
                 <div class="input-form__item">
-                    <span class="badge badge--required">必須</span><label class="input-form__label">スキルセット</label>
+                    <span class="badge badge--required">必須</span><label class="input-form__label">スキルセット(500文字)</label>
                     <p class="input-form__error-message {{$errors->first('user_skillset') ? 'has-error':'' }}">
                         {{$errors->first('user_skillset')}}</p>
                     <textarea placeholder="ex)自分が得意な言語や技術など"
@@ -61,7 +62,8 @@
 
 
                 <div class="input-form__item">
-                    <span class="badge badge--optional">任意</span><label class="input-form__label">プロフィールアイコン</label>
+                    <span class="badge badge--optional">任意</span><label
+                        class="input-form__label">プロフィールアイコン(2MBまで)</label>
                     <div>
                         <p class="input-form__error-message {{$errors->has('profile_upload_image') ? 'has-error':'' }}">
                             {{$errors->first('profile_upload_image')}}</p>

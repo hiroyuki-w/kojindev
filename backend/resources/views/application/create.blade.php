@@ -11,7 +11,8 @@
             <div class="input-form mt-30">
                 {{Form::open(['method'=>'post','files' => true,'route' => ['application.store',['trApplication' => $trApplication->id]],'class' => 'input-form__formtag'])}}
                 <div class="input-form__item">
-                    <span class="badge badge--required">必須</span><label class="input-form__label">アプリケーション名</label>
+                    <span class="badge badge--required">必須</span><label
+                        class="input-form__label">アプリケーション名(30文字)</label>
                     <p class="input-form__error-message {{$errors->first('application_name') ? 'has-error':'' }}">
                         {{$errors->first('application_name')}}</p>
                     <input placeholder="ex)個人dev" type="text" name="application_name"
@@ -38,7 +39,8 @@
                            value="{{old('tags',$trApplication->tr_application_tags->pluck('tag_name')->implode(','))}}">
                 </div>
                 <div class="input-form__item">
-                    <span class="badge badge--required">必須</span><label class="input-form__label">アプリケーションPR説明</label>
+                    <span class="badge badge--required">必須</span><label
+                        class="input-form__label">アプリケーションPR説明(64文字)</label>
                     <p class="input-form__error-message {{$errors->first('application_concept') ? 'has-error':'' }}">
                         {{$errors->first('application_concept')}}</p>
                     <input placeholder="ex)個人開発者のためのコミュニティ" type="text" name="application_concept"
@@ -55,7 +57,8 @@
                 </div>
                 <div class="input-form__item">
                     <div>
-                        <span class="badge badge--required">必須</span><label class="input-form__label">アプリケーション概要</label>
+                        <span class="badge badge--required">必須</span><label
+                            class="input-form__label">アプリケーション概要(200文字)</label>
                         <p class="input-form__error-message {{$errors->first('application_overview') ? 'has-error':'' }}">
                             {{$errors->first('application_overview')}}</p>
                         <textarea placeholder="ex)アプリケーションの機能や、利用者のターゲットなど"
@@ -65,7 +68,8 @@
                 </div>
                 <div class="input-form__item">
                     <div>
-                        <span class="badge badge--required">必須</span><label class="input-form__label">利用してる技術</label>
+                        <span class="badge badge--required">必須</span><label
+                            class="input-form__label">利用してる技術(500文字)</label>
                         <p class="input-form__error-message {{$errors->first('used_technology') ? 'has-error':'' }}">
                             {{$errors->first('used_technology')}}</p>
                         <textarea placeholder="ex)利用言語や、DBの種類、サーバの種類など"
@@ -76,7 +80,7 @@
                 <div class="input-form__item">
                     <div>
                         <span class="badge badge--optional">任意</span><label
-                            class="input-form__label">アプリケーションPR点</label>
+                            class="input-form__label">アプリケーションPR点(500文字)</label>
                         <p class="input-form__error-message {{$errors->first('pr_message') ? 'has-error':'' }}">
                             {{$errors->first('pr_message')}}</p>
                         <textarea placeholder="ex)注目ほしい点や、ユニークなところ"
@@ -86,7 +90,8 @@
                 </div>
                 <div class="input-form__item">
                     <div>
-                        <span class="badge badge--optional">任意</span><label class="input-form__label">今後の予定</label>
+                        <span class="badge badge--optional">任意</span><label
+                            class="input-form__label">今後の予定(500文字)</label>
                         <p class="input-form__error-message {{$errors->first('additional_features') ? 'has-error':'' }}">
                             {{$errors->first('additional_features')}}</p>
                         <textarea placeholder="ex)現在開発中の機能や、今後追加予定の機能など"
@@ -96,7 +101,7 @@
                 </div>
                 <div class="input-form__item">
                     <div>
-                        <span class="badge badge--optional">任意</span><label class="input-form__label">その他</label>
+                        <span class="badge badge--optional">任意</span><label class="input-form__label">その他(500文字)</label>
                         <p class="input-form__error-message {{$errors->first('other_message') ? 'has-error':'' }}">
                             {{$errors->first('other_message')}}</p>
                         <textarea placeholder="ex)現在開発中の機能や、今後追加予定の機能など"
@@ -106,7 +111,8 @@
                 </div>
                 <div class="input-form__item">
                     <div>
-                        <span class="badge badge--optional">任意</span><label class="input-form__label">スクリーンショット</label>
+                        <span class="badge badge--optional">任意</span><label
+                            class="input-form__label">スクリーンショット(2MBまで)</label>
                         <div>
                             <p class="input-form__error-message {{$errors->has('application_upload_image.*') ? 'has-error':'' }}">
                                 {{$errors->first('application_upload_image.*')}}</p>

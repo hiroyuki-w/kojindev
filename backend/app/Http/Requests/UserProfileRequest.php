@@ -25,11 +25,11 @@ class UserProfileRequest extends FormRequest
     {
         return [
             'user_name' => 'required|max:32',
-            'user_profile' => 'required|max:200',
-            'user_skillset' => 'required|max:200',
+            'user_profile' => 'required|max:500',
+            'user_skillset' => 'required|max:500',
             'git_account' => 'present|max:30',
             'twitter_account' => 'present|max:30',
-            'my_url' => 'present|max:30',
+            'my_url' => 'present|max:200',
             'profile_upload_image' => 'image|max:2048',
             'delete_image' => 'in:1',
 
